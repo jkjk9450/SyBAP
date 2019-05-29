@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="SyBAP.Presentation.Views.RibbonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SyBAP.Presentation.Views"
+             xmlns:r ="clr-namespace:Fluent;assembly=Fluent"
+             xmlns:viewModels="clr-namespace:SyBAP.Applications.ViewModels;assembly=SyBAP.Applications"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <r:Ribbon>
+            <r:Ribbon.Menu>
+                <r:Backstage Header="File">
+                    <r:BackstageTabControl></r:BackstageTabControl>
+                </r:Backstage>
+            </r:Ribbon.Menu>
+            <r:RibbonTabItem Header="Analysis">
+                <r:RibbonGroupBox>
+                    <r:Button Header="Compute" Command="{Binding CommandCompute}"></r:Button>
+                </r:RibbonGroupBox>
+            </r:RibbonTabItem>
+        </r:Ribbon>
+    </DockPanel>
+</UserControl>
