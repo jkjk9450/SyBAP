@@ -73,9 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Models\AISData.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\HDFS.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\ModelManager.cs" />
+    <Compile Include="Models\PostgreSQL.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Sqoop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

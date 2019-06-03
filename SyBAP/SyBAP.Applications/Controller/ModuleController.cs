@@ -31,6 +31,7 @@ namespace SyBAP.Applications.Controller
 
         private void ExecuteCompute()
         {
+            ModelManager.GetInstance().GetSqoop();
         }
 
         public void Initialize()
