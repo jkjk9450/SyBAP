@@ -17,7 +17,13 @@
             </r:Ribbon.Menu>
             <r:RibbonTabItem Header="Analysis">
                 <r:RibbonGroupBox>
-                    <r:Button Header="Compute" Command="{Binding CommandCompute}"></r:Button>
+                    <r:Button Header="List" Command="{Binding CommandList}"></r:Button>
+                </r:RibbonGroupBox>
+                <r:RibbonGroupBox>
+                    <r:Button Header="Import" Command="{Binding CommandImport}"></r:Button>
+                </r:RibbonGroupBox>
+                <r:RibbonGroupBox>
+                    <r:Button Header="Export" Command="{Binding CommandExport}"></r:Button>
                 </r:RibbonGroupBox>
             </r:RibbonTabItem>
         </r:Ribbon>

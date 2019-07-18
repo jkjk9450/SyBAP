@@ -17,20 +17,20 @@
                 <xcad:LayoutPanel Orientation="Horizontal">
                     <xcad:LayoutAnchorablePane DockWidth="300">
                         <xcad:LayoutAnchorable Title="Modeltree">
-                            <ContentPresenter Content="{Binding ContentTreeView}"></ContentPresenter>
+                            <!--<ContentPresenter Content="{Binding ContentTreeView}"></ContentPresenter>-->
+                            <ContentPresenter Content="{Binding ContentPropertyView}"></ContentPresenter>
                         </xcad:LayoutAnchorable>
                     </xcad:LayoutAnchorablePane>
                     <xcad:LayoutDocumentPane>
 
-                        <xcad:LayoutDocument Title="StudResult">
-                            <ContentPresenter Content="{Binding ContentGraphView}"></ContentPresenter>
+                        <xcad:LayoutDocument Title="Property">
                         </xcad:LayoutDocument>
                     </xcad:LayoutDocumentPane>
-                    <xcad:LayoutAnchorablePane DockWidth="300">
+                    <!--<xcad:LayoutAnchorablePane DockWidth="300">
                         <xcad:LayoutAnchorable Title="Modeltree">
-                            <ContentPresenter Content="{Binding ContentPropertyView}"></ContentPresenter>
+                            <ContentPresenter Content="{Binding ContentGraphView}"></ContentPresenter>
                         </xcad:LayoutAnchorable>
-                    </xcad:LayoutAnchorablePane>
+                    </xcad:LayoutAnchorablePane>-->
                 </xcad:LayoutPanel>
             </xcad:LayoutRoot>
         </xcad:DockingManager>

@@ -34,22 +34,28 @@ namespace SyBAP.Domain.Models
         }
 
         private HDFS _hdfs;
-        private PostgreSQL _postgreSql;
+        private OracleDB _postgreSql;
         private Sqoop _sqoop;
 
-        public void GetSqoop()
+        public void CreateModel()
         {
-            string host = "147.46.144.30";
-            string username = "sydlab";
-            string password = "123qwe!@#";
-            string database = "digital_twin";
+            //string sqlhost = "";
+            //string sqlname = "";
+            //string sqlpsw = "";
+            //string sqldatabase = "";
+            //string hdfshost = "147.46.144.30";
+            //string hdfsname = "root";
+            //string hdfspsw = "!34ehd312gh@";
 
-            string postusername = "dt_user";
-            _hdfs = new HDFS(host, username, password);
-
-            _postgreSql = new PostgreSQL(host, username, password, database);
-            _sqoop = new Sqoop(_postgreSql, _hdfs);
-            _sqoop.ListTable();
+            //PostgreSQL postgreSql = new PostgreSQL(sqlhost, sqlname, sqlpsw, sqldatabase);
+            //HDFS hdfs = new HDFS(hdfshost, hdfsname, hdfspsw);
+            //Sqoop sqoop = new Sqoop(postgreSql, hdfs);
+            Sqoop sqoop = new Sqoop();
+            SqoopExample = sqoop;
+            SqoopExample.Name = "Example1";
+            Project.DataModels.Children.Add(SqoopExample);
         }
+
+        public Sqoop SqoopExample;
     }
 }

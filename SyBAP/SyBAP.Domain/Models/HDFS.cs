@@ -12,7 +12,7 @@ namespace SyBAP.Domain.Models
         {
             client = new SshClient(host, username, password);
             this.password = password;
-            client.Connect();
+            //client.Connect();5
         }
 
         public void RunCommand(string command)

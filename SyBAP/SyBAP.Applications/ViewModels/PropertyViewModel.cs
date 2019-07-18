@@ -21,15 +21,15 @@ namespace SyBAP.Applications.ViewModels
                 case NotifyCollectionChangedAction.Add:
                     foreach (var item in e.NewItems)
                     {
-                        _selectedObject = item as ModelBase;
+                        SelectedObject = item as Sqoop;
                     }
                     break;
             }
         }
 
-        private ModelBase _selectedObject;
+        private Sqoop _selectedObject;
 
-        public ModelBase SelectedObject
+        public Sqoop SelectedObject
         {
             get => _selectedObject;
             set => SetProperty(ref _selectedObject, value);

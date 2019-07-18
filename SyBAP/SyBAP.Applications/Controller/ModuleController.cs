@@ -15,7 +15,9 @@ namespace SyBAP.Applications.Controller
         private TreeViewModel _treeViewModel;
         private PropertyViewModel _propertyViewModel;
 
-        private DelegateCommand _commandCompute;
+        private DelegateCommand _commandList;
+        private DelegateCommand _commandImport;
+        private DelegateCommand _commandExport;
 
         [ImportingConstructor]
         public ModuleController(ShellViewModel shellViewModel, RibbonViewModel ribbonViewModel, TreeViewModel treeViewModel, PropertyViewModel propertyViewModel, GraphViewModel graphViewModel)
@@ -26,12 +28,24 @@ namespace SyBAP.Applications.Controller
             _propertyViewModel = propertyViewModel;
             _graphViewModel = graphViewModel;
 
-            _commandCompute = new DelegateCommand(ExecuteCompute);
+            _commandList = new DelegateCommand(ExecuteList);
+            _commandImport = new DelegateCommand(ExecuteImport);
+            _commandExport = new DelegateCommand(ExecuteExport);
         }
 
-        private void ExecuteCompute()
+        private void ExecuteExport()
         {
-            ModelManager.GetInstance().GetSqoop();
+            ModelManager.GetInstance().SqoopExample.ExecuteExportTable();
+        }
+
+        private void ExecuteImport()
+        {
+            ModelManager.GetInstance().SqoopExample.ExecuteImportTable();
+        }
+
+        private void ExecuteList()
+        {
+            ModelManager.GetInstance().SqoopExample.ExecuteListTable();
         }
 
         public void Initialize()
@@ -41,13 +55,17 @@ namespace SyBAP.Applications.Controller
             _shellViewModel.ContentPropertyView = _propertyViewModel.View;
             _shellViewModel.ContentGraphView = _graphViewModel.View;
 
-            _ribbonViewModel.CommandCompute = _commandCompute;
+            _ribbonViewModel.CommandList = _commandList;
+            _ribbonViewModel.CommandImport = _commandImport;
+            _ribbonViewModel.CommandExport = _commandExport;
 
             ModelManager.GetInstance().PropertyChanged += _treeViewModel.ModelManagerPropertyChanged;
             ModelManager.GetInstance().CreateProject();
+            ModelManager.GetInstance().CreateModel();
 
             _treeViewModel.SelectedTreeNodes.CollectionChanged += _propertyViewModel.SelectedTreeNodeCollectionChange;
             _treeViewModel.SelectedTreeNodes.CollectionChanged += _graphViewModel.SelectedTreeNodeCollectionChange;
+            _propertyViewModel.SelectedObject = ModelManager.GetInstance().SqoopExample;
         }
 
         public void Run()

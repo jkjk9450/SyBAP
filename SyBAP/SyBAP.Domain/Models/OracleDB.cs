@@ -4,7 +4,7 @@ using Npgsql;
 
 namespace SyBAP.Domain.Models
 {
-    public class PostgreSQL : Group
+    public class OracleDB : Group
     {
         private NpgsqlConnection conn;
         private NpgsqlCommand cmd;
@@ -13,25 +13,25 @@ namespace SyBAP.Domain.Models
         public string password;
         public string database;
 
-        public PostgreSQL(string host, string username, string password, string database)
+        public OracleDB(string host, string username, string password, string database)
         {
             this.host = host;
             this.username = username;
             this.password = password;
             this.database = database;
-            try
-            {
-                conn = new NpgsqlConnection(String.Format("Host={0};Username={1};Password={2};Database={3}", host, username,
-                    password, database));
-                conn.Open();
-                cmd = new NpgsqlCommand();
-                cmd.Connection = conn;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            //try
+            //{
+            //    conn = new NpgsqlConnection(String.Format("Host={0};Username={1};Password={2};Database={3}", host, username,
+            //        password, database));
+            //    conn.Open();
+            //    cmd = new NpgsqlCommand();
+            //    cmd.Connection = conn;
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    //throw;
+            //}
         }
 
         public List<string> GetTableList(string schema)
