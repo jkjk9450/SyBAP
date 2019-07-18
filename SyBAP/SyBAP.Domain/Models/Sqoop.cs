@@ -1,9 +1,5 @@
-﻿using Npgsql;
-using Renci.SshNet;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 
 namespace SyBAP.Domain.Models
 {
@@ -16,6 +12,7 @@ namespace SyBAP.Domain.Models
         {
             this.postgresql = new OracleDB(OracleHost, OracleUserName, OraclePassword, TableName);
             this.hdfs = new HDFS(HdfsHost, HdfsUsername, HdfsPassword);
+            Console.WriteLine("Sqoop Called");
         }
 
         public void ExecuteListTable()
@@ -24,7 +21,7 @@ namespace SyBAP.Domain.Models
                 "sudo -S sqoop list-tables --connect jdbc:postgresql://{0}/{1}  --username {2} --password '{3}'",
                 postgresql.host, postgresql.database, postgresql.username, postgresql.password));
             //hdfs.RunCommand("sudo -S sqoop list-tables --connect jdbc:postgresql://147.46.144.30/digital_twin --username dt_user --password '123qwe!@#';");
-            hdfs.RunCommand(hdfs.password);
+            //hdfs.RunCommand(hdfs.password);
         }
 
         public void ExecuteImportTable()
@@ -35,7 +32,7 @@ namespace SyBAP.Domain.Models
         {
         }
 
-        private string _hdfsHost = "10.4.99.47";
+        private string _hdfsHost = "147.46.144.30";
 
         [Category("HDFS")]
         [DisplayName("HDFSHost")]
@@ -45,7 +42,7 @@ namespace SyBAP.Domain.Models
             set => SetProperty(ref _hdfsHost, value);
         }
 
-        private string _hdfsUsername = "root";
+        private string _hdfsUsername = "sydlab";
 
         [DisplayName("UserName")]
         public string HdfsUsername
@@ -54,7 +51,7 @@ namespace SyBAP.Domain.Models
             set => SetProperty(ref _hdfsUsername, value);
         }
 
-        private string _hdfsPassword = "hhiplm2018";
+        private string _hdfsPassword = "123qwe!@#";
 
         [DisplayName("Password")]
         public string HdfsPassword
@@ -63,7 +60,7 @@ namespace SyBAP.Domain.Models
             set => SetProperty(ref _hdfsPassword, value);
         }
 
-        private string _oracleHost = "10.100.32.67";
+        private string _oracleHost = "147.46.144.30";
 
         [Category("OracleDB")]
         [DisplayName("Host")]
@@ -73,7 +70,7 @@ namespace SyBAP.Domain.Models
             set => SetProperty(ref _oracleHost, value);
         }
 
-        private string _oracleUserName = "sys as sysdba";
+        private string _oracleUserName = "postgres";
 
         [DisplayName("UserName")]
         public string OracleUserName
@@ -82,7 +79,7 @@ namespace SyBAP.Domain.Models
             set => SetProperty(ref _oracleUserName, value);
         }
 
-        private string _oraclePassword = "system";
+        private string _oraclePassword = "123qwe!@#";
 
         [DisplayName("Password")]
         public string OraclePassword

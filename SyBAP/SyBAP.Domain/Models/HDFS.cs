@@ -12,7 +12,8 @@ namespace SyBAP.Domain.Models
         {
             client = new SshClient(host, username, password);
             this.password = password;
-            //client.Connect();5
+            client.Connect();
+            Console.WriteLine("Server Connected");
         }
 
         public void RunCommand(string command)
