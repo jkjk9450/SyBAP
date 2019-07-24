@@ -1,5 +1,5 @@
-﻿using System;
-using Renci.SshNet;
+﻿using Renci.SshNet;
+using System;
 
 namespace SyBAP.Domain.Models
 {
@@ -18,7 +18,15 @@ namespace SyBAP.Domain.Models
 
         public void RunCommand(string command)
         {
-            var result = client.RunCommand("echo -e '" + password + "\\n' | " + command);
+            var result = client.RunCommand(command);
+            Console.WriteLine(result.CommandText);
+            Console.WriteLine(result.Result);
+        }
+
+        public void RunSudoCommand(string command)
+        {
+            var result = client.RunCommand("echo -e '" + password + "\\n' | sudo -S " + command);
+            Console.WriteLine(result.CommandText);
             Console.WriteLine(result.Result);
         }
 

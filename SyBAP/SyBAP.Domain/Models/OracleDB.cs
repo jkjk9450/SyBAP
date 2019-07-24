@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using Npgsql;
+﻿//using Npgsql;
 
 namespace SyBAP.Domain.Models
 {
     public class OracleDB : Group
     {
-        private NpgsqlConnection conn;
-        private NpgsqlCommand cmd;
+        //private NpgsqlConnection conn;
+        //private NpgsqlCommand cmd;
         public string host;
+
         public string username;
         public string password;
         public string database;
@@ -30,49 +29,54 @@ namespace SyBAP.Domain.Models
             //catch (Exception e)
             //{
             //    Console.WriteLine(e);
-            //    //throw;
+            //    throw;
             //}
         }
 
-        public List<string> GetTableList(string schema)
-        {
-            List<string> TableList = new List<string>();
-            cmd.CommandText = "select * from pg_tables where schemaname = '" + schema + "';";
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                string tablename = reader["tablename"].ToString();
-                TableList.Add(tablename);
-            }
-            reader.Close();
-            return TableList;
-        }
+        //    public List<string> GetTableList(string schema)
+        //    {
+        //        List<string> TableList = new List<string>();
+        //        cmd.CommandText = "select * from pg_tables where schemaname = '" + schema + "';";
+        //        var reader = cmd.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            string tablename = reader["tablename"].ToString();
+        //            TableList.Add(tablename);
+        //        }
+        //        reader.Close();
 
-        public void Command(string command)
-        {
-            try
-            {
-                cmd.CommandText = command;
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
+        //        foreach (string name in TableList)
+        //        {
+        //            Console.WriteLine(name);
+        //        }
+        //        return TableList;
+        //    }
 
-        public void Disconnect()
-        {
-            try
-            {
-                conn.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
+        //    public void Command(string command)
+        //    {
+        //        try
+        //        {
+        //            cmd.CommandText = command;
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            Console.WriteLine(e);
+        //            throw;
+        //        }
+        //    }
+
+        //    public void Disconnect()
+        //    {
+        //        try
+        //        {
+        //            conn.Close();
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            Console.WriteLine(e);
+        //            throw;
+        //        }
+        //    }
     }
 }
